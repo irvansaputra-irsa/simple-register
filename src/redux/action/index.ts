@@ -9,7 +9,7 @@ export const usersSlice = createSlice({
     initialState,
     reducers: {
         addUsers: (
-            state: { users: Array<string> },
+            state: { listOfUser: Array<string> },
             action: {
                 payload: {
                     name: string,
@@ -18,7 +18,7 @@ export const usersSlice = createSlice({
                 }
             }
         ) => {
-            state.listOfUser = [...state?.listOfUser, action?.payload]
+            state.listOfUser = [...state?.listOfUser, action?.payload as unknown as string]
         }
     }
 })

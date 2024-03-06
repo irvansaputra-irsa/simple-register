@@ -1,21 +1,19 @@
-import { Box, Button, FormControl, FormHelperText, FormLabel, Heading, Input } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
- //gak tau cara pake tag form dari react router 
+//gak tau cara pake tag form dari react router 
 import { addUsers } from '../../redux/action'
 
 export const Register = () => {
   const dispatch = useDispatch();
-
-  const submitBtn = (e) => {
+  const nameField = useRef<HTMLInputElement | null>(null);
+  const passwordField = useRef<HTMLInputElement | null>(null);
+  const emailField = useRef<HTMLInputElement | null>(null);
+  
+  const submitBtn = (e : any) => {
     e.preventDefault();
-    dispatch(addUsers({ name : nameField.current.value, password: passwordField.current.value, email: emailField.current.value}));
+    dispatch(addUsers({ name: nameField?.current?.value as string, password: passwordField?.current?.value as string, email: emailField?.current?.value as string}));
   }
-
-  const nameField = useRef<HTMLInputElement>(null);
-  const passwordField = useRef<HTMLInputElement>(null);
-  const emailField = useRef<HTMLInputElement>(null);
-
   return (
     <Box maxW={'40%'} padding={10} borderRadius={20} bgColor={'#D2E6EF'} m={20}>
       <form onSubmit={(e) => submitBtn(e)}>
