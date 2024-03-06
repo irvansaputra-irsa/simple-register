@@ -11,7 +11,7 @@ export const List = () => {
 
   const listUsers= useSelector((state: { users: { listOfUser: listType } }) => state.users.listOfUser)
   return (
-    <Box>
+    <Box maxW={'550px'}>
       <TableContainer>
         <Table variant='simple'>
           <TableCaption placement='top'>List of Users</TableCaption>
@@ -23,7 +23,6 @@ export const List = () => {
             </Tr>
           </Thead>
           <Tbody>
-
             {listUsers instanceof Array && listUsers.map((el, idx) => (
               <Tr key={idx}>
                 <Td>{el.name}</Td>
